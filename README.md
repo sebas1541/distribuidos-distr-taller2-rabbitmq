@@ -1,65 +1,65 @@
-# Distributed Work Queue with RabbitMQ
+# Cola de Trabajo Distribuida con RabbitMQ
 
-A simple distributed work queue using RabbitMQ and TypeScript. One producer sends tasks to a queue, multiple workers process them.
+Una cola de trabajo distribuida simple usando RabbitMQ y TypeScript. Un productor envía tareas a una cola, múltiples trabajadores las procesan.
 
-## Team Members
+## Integrantes
 
 - Sebastián Cañón
 - Natalia Bernal
 
-## What it does
+## Qué hace
 
-- Producer sends 10 tasks with different complexity levels (1-5 seconds each)
-- Workers consume tasks from the queue and process them 
-- Each worker can only handle one task at a time
-- If a worker crashes, tasks are redistributed to other workers
+- El productor envía 10 tareas con diferentes niveles de complejidad (1-5 segundos cada una)
+- Los trabajadores consumen tareas de la cola y las procesan
+- Cada trabajador solo puede manejar una tarea a la vez
+- Si un trabajador falla, las tareas se redistribuyen a otros trabajadores
 
-## Files
+## Archivos
 
-- `producer.ts` - Sends tasks to the queue
-- `consumer.ts` - Processes tasks from the queue
-- `docker-compose.yml` - Runs everything in containers
+- `producer.ts` - Envía tareas a la cola
+- `consumer.ts` - Procesa tareas de la cola
+- `docker-compose.yml` - Ejecuta todo en contenedores
 
-## Commands Used
+## Comandos Utilizados
 
-Start and build the system:
+Iniciar y construir el sistema:
 ```bash
 docker-compose up --build -d
 ```
 
-Scale to 2 consumers:
+Escalar a 2 consumidores:
 ```bash
 docker-compose up --scale consumer=2
 ```
 
-View producer logs:
+Ver logs del productor:
 ```bash
 docker-compose logs producer
 ```
 
-Kill consumer containers:
+Matar contenedores de consumidores:
 ```bash
 docker-compose kill consumer
 ```
 
-## Evidence Photos
+## Evidencias
 
-Building and starting containers:
+Construyendo e iniciando contenedores:
 ![Docker Compose Build](resources/compose-docker-image.png)
-Command: `docker-compose up --build -d`
+Comando: `docker-compose up --build -d`
 
-Scaling consumers to 2 workers:
+Escalando consumidores a 2 trabajadores:
 ![Scale Consumer](resources/scale-consumer.png)
-Command: `docker-compose up --scale consumer=2`
+Comando: `docker-compose up --scale consumer=2`
 
-Producer logs showing sent tasks:
+Logs del productor mostrando tareas enviadas:
 ![System Logs](resources/logs.png)
-Command: `docker-compose logs producer`
+Comando: `docker-compose logs producer`
 
-RabbitMQ Management Dashboard:
+Panel de administración de RabbitMQ:
 ![RabbitMQ Dashboard](resources/rabbit-dasbboard.png)
 URL: `localhost:15672`
 
-Killing consumer containers:
+Matando contenedores de consumidores:
 ![Kill Consumer](resources/kill-consumer.png)
-Command: `docker-compose kill consumer`
+Comando: `docker-compose kill consumer`
