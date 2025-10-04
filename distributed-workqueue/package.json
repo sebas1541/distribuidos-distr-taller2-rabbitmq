@@ -1,0 +1,28 @@
+{
+  "name": "distributed-workqueue",
+  "version": "1.0.0",
+  "description": "Distributed work queue using RabbitMQ with TypeScript",
+  "main": "dist/producer.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/producer.js",
+    "start:producer": "npm run build && node dist/producer.js",
+    "start:consumer": "npm run build && node dist/consumer.js",
+    "dev:producer": "ts-node producer.ts",
+    "dev:consumer": "ts-node consumer.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["rabbitmq", "typescript", "distributed", "workqueue"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.9"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
+  }
+}
